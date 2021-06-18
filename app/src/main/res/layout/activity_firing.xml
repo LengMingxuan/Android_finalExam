@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firing_Activity"
+    android:orientation="vertical">
+
+
+    <Button
+        android:layout_margin="20dp"
+        android:id="@+id/btnQuickIn"
+        android:layout_width="77dp"
+        android:layout_height="37dp"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:background="@drawable/firingquickbutton"
+        android:text="3 | 跳过" />
+
+</LinearLayout>
