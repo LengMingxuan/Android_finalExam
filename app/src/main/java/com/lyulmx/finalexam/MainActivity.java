@@ -19,22 +19,25 @@ public class MainActivity extends AppCompatActivity {
     List<Map<String, Object>> list;
     Cursor cursor;
     SQLiteDatabase db;
-    MyOpenHelper helper;
+    SimpleAdapter adapter;
+    MyOpenHelper helper = new MyOpenHelper(this);;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        list = new ArrayList<Map<String, Object>>();
         setContentView(R.layout.activity_main);
+        db = helper.getReadableDatabase();
+        cursor = db.rawQuery("select * from users",null);
         mainlv = findViewById(R.id.lv);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        SimpleAdapter adapter = new SimpleAdapter(
-                this,list,R.layout.activity_main,
-                new String[]{"_id","name","phone"},
+        list = new ArrayList<Map<String, Object>>();
+        GetData();
+        adapter= new SimpleAdapter(
+                this,list,R.layout.singlelistviewlayout,
+                new String[]{"_id","StuId","Stuname"},
                 new int[]{R.id.idStu,R.id.stuId,R.id.stuName});
         mainlv.setAdapter(adapter);
     }
@@ -48,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
             while (cursor.moveToNext()){
                 map = new HashMap<String, Object>();
                 int id = cursor.getInt(cursor.getColumnIndex("_id"));
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                String phone = cursor.getString(cursor.getColumnIndex("phone"));
+                String studentId = cursor.getString(cursor.getColumnIndex("StuId"));
+                String studentName = cursor.getString(cursor.getColumnIndex("Stuname"));
 
                 map.put("_id",id);
-                map.put("name",name);
-                map.put("phone",phone);
+                map.put("StuId",studentId);
+                map.put("Stuname",studentName);
 
                 list.add(map);
             }
