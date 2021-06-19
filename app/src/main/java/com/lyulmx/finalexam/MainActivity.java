@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         list = new ArrayList<Map<String, Object>>();
-        GetData();
+        GetListViewItemData.GetData(list, cursor, db);
         adapter= new SimpleAdapter(
                 this,list,R.layout.singlelistviewlayout,
                 new String[]{"_id","StuId","Stuname"},
@@ -42,26 +40,5 @@ public class MainActivity extends AppCompatActivity {
         mainlv.setAdapter(adapter);
     }
 
-    public void GetData(){
 
-        list.clear();
-
-        Map<String, Object> map = null;
-        if(cursor != null && cursor.getCount() > 0){
-            while (cursor.moveToNext()){
-                map = new HashMap<String, Object>();
-                int id = cursor.getInt(cursor.getColumnIndex("_id"));
-                String studentId = cursor.getString(cursor.getColumnIndex("StuId"));
-                String studentName = cursor.getString(cursor.getColumnIndex("Stuname"));
-
-                map.put("_id",id);
-                map.put("StuId",studentId);
-                map.put("Stuname",studentName);
-
-                list.add(map);
-            }
-        }
-        cursor.close();
-        db.close();
-    }
 }
