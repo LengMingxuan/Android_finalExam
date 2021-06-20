@@ -48,7 +48,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity {
         stuId.setText(""+ strId);
         stuDprtmtNum.setText(""+strDprtmtNum);
         stuPhone.setText(""+strPhone);
-        if (strSex == "0"){
+        if (strSex.equals("0")){
             stuSex.setText("男");
         }else{
             stuSex.setText("女");
