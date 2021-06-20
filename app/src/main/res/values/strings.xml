@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">finalExam</string>
+    <string name="DetailedUserInformation">学号：</string>
+    <array name="info">
+        学号
+        三射
+    </array>
 </resources>
