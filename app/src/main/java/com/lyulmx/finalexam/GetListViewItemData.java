@@ -2,6 +2,7 @@ package com.lyulmx.finalexam;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,5 +31,16 @@ public class GetListViewItemData {
         }
         cursor.close();
         db.close();
+    }
+
+    public static void GetAllDataFromDB(Cursor cursor, SQLiteDatabase db,int itemId) {
+
+        cursor = db.rawQuery("select * from student where id=?", new String[]{String.valueOf(itemId)});
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex("id"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String password = cursor.getString(cursor.getColumnIndex("password"));
+            String number = cursor.getString(cursor.getColumnIndex("number"));
+        }
     }
 }
