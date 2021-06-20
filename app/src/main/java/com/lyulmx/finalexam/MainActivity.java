@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         });
         //TODO: ListView 点击事件
 
-
     }
 
     @Override
