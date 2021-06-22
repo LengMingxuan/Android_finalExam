@@ -32,6 +32,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
     String midRooms;
     String midBuilding;
     int newStuSex;
+    boolean SpinnerBuildingChangedFlag = false, SpinnerRoomsChangedFlag = false;
     //TODO: (Finished!)定义变量
 
     @Override
@@ -84,9 +85,10 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         sprRoom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv1 = (TextView)view;
+                //TextView tv1 = (TextView)view;
                 midRooms = aprtRooms[position];
                 //midRooms = tv1.getText().toString();
+                SpinnerRoomsChangedFlag = true;
             }
 
             @Override
@@ -97,9 +99,10 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         sprBuild.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv = (TextView)view;
+                //TextView tv = (TextView)view;
                 //midBuilding = tv.getText().toString();
                 midBuilding = aprtBuilding[position];
+                SpinnerBuildingChangedFlag = true;
             }
 
             @Override
@@ -107,7 +110,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
 
             }
         });
-        //TODO: (Finished!) spinner宿舍号传值
+        //TODO: spinner宿舍号传值，（待实现）不改变Spinner的值会显示null!!!
 
         rgroup.setOnCheckedChangeListener(this);
         //TODO: (Finished!)RadioGroup选择改变监听 外部处理事件
@@ -126,11 +129,25 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
                 db.execSQL("update users set Stuphone='"+newPhone+"' where _id="+strid);
                 db.execSQL("update users set StuId='"+newStuId+"' where _id="+strid);
                 String newBuildingAndRooms = midBuilding + "-" + midRooms;
-                db.execSQL("update users set StuApartment='"+newBuildingAndRooms+"' where _id="+strid);
+
+                if (SpinnerBuildingChangedFlag && SpinnerRoomsChangedFlag){
+                    db.execSQL("update users set StuApartment='"+newBuildingAndRooms+"' where _id="+strid);
+                    }
+                else if (SpinnerBuildingChangedFlag && !SpinnerRoomsChangedFlag){
+                    db.execSQL("update users set StuApartment='"+midBuilding+"-"+arg2+"' where _id="+strid);
+                    }
+                else if(!SpinnerBuildingChangedFlag && SpinnerRoomsChangedFlag){
+                    db.execSQL("update users set StuApartment='"+arg1+"-"+midRooms+"' where _id="+strid);
+                    }
+                else{
+                    db.execSQL("update users set StuApartment='"+newBuildingAndRooms+"' where _id="+strid);
+                    }
+                SpinnerRoomsChangedFlag = false;
+                SpinnerBuildingChangedFlag = false;
                 db.execSQL("update users set StuSex='"+newStuSex+"' where _id="+strid);
                 Intent intent = new Intent(EditItemInfoFrDb.this,MainActivity.class);
                 startActivity(intent);
-
+                finish();
             }
         });
         //TODO: (Finished!)更新按钮按键监听事件
@@ -173,7 +190,5 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
 
     }
     //TODO: (Finished!) RadioButton性别传值
-
-
 
 }
