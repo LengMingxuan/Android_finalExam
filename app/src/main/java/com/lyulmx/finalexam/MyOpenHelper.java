@@ -17,6 +17,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
                 "users(_id integer primary key autoincrement,Stuname varchar(10), " +
                 "Stuphone varchar(11), StuId varchar(12), StuApartment varchar(6), StuSex int(1))");
     }
+    //TODO: (Finished!)创建数据表
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

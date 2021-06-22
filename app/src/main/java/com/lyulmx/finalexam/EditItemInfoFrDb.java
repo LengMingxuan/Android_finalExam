@@ -32,6 +32,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
     String midRooms;
     String midBuilding;
     int newStuSex;
+    //TODO: (Finished!)定义变量
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         sprRoom = findViewById(R.id.spinnerAprtRoomId);
         rgroup = findViewById(R.id.rGroup);
         btnUpdate = findViewById(R.id.btnUpdate);
+        //TODO: (Finished!)链接控件
 
 
         ArrayAdapter<String> buildingAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, aprtBuilding);
@@ -53,6 +55,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         roomsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sprRoom.setAdapter(roomsAdapter);
         sprBuild.setAdapter(buildingAdapter);
+        //TODO: (Finished!)两个Spinner的数据填充
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -62,6 +65,8 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         String strSex = bundle.getString("strSex");
         String strDprtmtNum = bundle.getString("strDprtmtNum");
         int idd = bundle.getInt("idd");
+        String strid  = String.valueOf(idd);
+        //TODO: (Finished!)获取中页面传来的各种学生详情数据
 
 
         EDITAy_etPhone.setText(strPhone);
@@ -71,9 +76,10 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         String arg1, arg2;
         arg1 = finalBuilding[0];
         arg2 = finalBuilding[1];
-        setSpinnerDefaultValue(sprBuild,arg1);
+        setSpinnerDefaultValue(sprBuild,arg1);  //设置Spinner默认数据
         setSpinnerDefaultValue(sprRoom,arg2);
-        String strid  = String.valueOf(idd);
+        //TODO: (Finished!) 将传来的数据显示在各种控件上
+
 
         sprRoom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -88,7 +94,6 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
 
             }
         });
-
         sprBuild.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -102,12 +107,13 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
 
             }
         });
-
-        //TODO: spinner宿舍号传值
+        //TODO: (Finished!) spinner宿舍号传值
 
         rgroup.setOnCheckedChangeListener(this);
+        //TODO: (Finished!)RadioGroup选择改变监听 外部处理事件
 
         setRBValue(strSex, rgroup);
+        //TODO: (Finished!)(自定义-定义)RadioButton传值函数 -> 根据选择的RadioButton男女，返回0和1
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +133,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
 
             }
         });
+        //TODO: (Finished!)更新按钮按键监听事件
 
     }
 
@@ -140,6 +147,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
             }
         }
     }
+    //TODO: (Finished!)（自定义-实现）设置Spinner默认数据
 
     private void setRBValue(String sexStr, RadioGroup typeRadioGroup){
         if(sexStr.equals("0")){//代表男的
@@ -148,7 +156,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
             typeRadioGroup.check(R.id.rbGirl);
         }
     }
-
+    //TODO: (Finished!)(自定义-实现)RadioButton传值函数 -> 根据选择的RadioButton男女，返回0和1
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -164,7 +172,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
         }
 
     }
-    //TODO: RadioButton性别传值
+    //TODO: (Finished!) RadioButton性别传值
 
 
 

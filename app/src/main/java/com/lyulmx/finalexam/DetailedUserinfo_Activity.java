@@ -34,12 +34,12 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         stuPhone = findViewById(R.id.ADU_stuPhone);
         btnBack = findViewById(R.id.btnBackAduToListview);
         btnEdit = findViewById(R.id.btnEdit);
-        //TODO: 控件链接
+        //TODO: (Finished!)控件链接
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         EUA_itemId = bundle.getInt("itemId");
-        //TODO: 获取用户点击的itemID
+        //TODO: (Finished!)获取用户点击的itemID
 
         db = helper.getReadableDatabase();
         cursor = db.rawQuery("select * from users where _id=?", new String[]{String.valueOf(EUA_itemId)});
@@ -52,7 +52,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 strDprtmtNum = cursor.getString(cursor.getColumnIndex("StuApartment"));
             }
         }
-        //TODO: 在数据库中查找数据并赋值给变量
+        //TODO: (Finished!)在数据库中查找数据并赋值给变量
 
         stuName.setText("" + strName);
         stuId.setText("" + strId);
@@ -64,11 +64,11 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         else{
             stuSex.setText("女");
         }
-        //TODO: 将得到的数据显示在控件上
+        //TODO: (Finished!)将得到的数据显示在控件上
 
         btnBack.setOnClickListener(this);
         btnEdit.setOnClickListener(this);
-       //TODO: 用户按钮点击事件
+       //TODO: (Finished!)用户按钮点击事件
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -91,5 +91,5 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 break;
         }
     }
-    //TODO: 用户按钮点击事件实现
+    //TODO: (Finished!)用户按钮点击事件实现
 }

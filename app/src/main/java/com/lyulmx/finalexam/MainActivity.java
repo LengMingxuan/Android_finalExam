@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         tvDebug = findViewById(R.id.tvDeBug);
         mainlv = findViewById(R.id.lv);
-        //TODO：链接控件与代码
+        //TODO：(Finished!)链接控件与代码
 
         db = helper.getReadableDatabase();
         cursor = db.rawQuery("select * from users",null);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //TODO: ListView 点击事件
+        //TODO: (Finished!)ListView 点击事件
 
     }
 
@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
         list = new ArrayList<Map<String, Object>>();
 
         GetListViewItemData.GetData(list, cursor, db);
-        //TODO: 获取数据库数据
+        //TODO: (Finished!)获取数据库数据
 
         adapter= new SimpleAdapter(
                 this,list,R.layout.singlelistviewlayout,
                 new String[]{"_id","StuId","Stuname"},
                 new int[]{R.id.idStu,R.id.stuId,R.id.stuName});
         mainlv.setAdapter(adapter);
-        //TODO：ListView 显示数据
+        //TODO：(Finished!)ListView 显示数据
     }
 
 

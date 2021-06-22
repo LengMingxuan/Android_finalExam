@@ -85,7 +85,7 @@ public class RoundImageView extends ImageView{
         paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
         return output;
-
-
     }
+
+    //TODO: (Finished!)获取圆形ImageView
 }

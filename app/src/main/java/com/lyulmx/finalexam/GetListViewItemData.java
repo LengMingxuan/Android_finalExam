@@ -32,6 +32,7 @@ public class GetListViewItemData {
         cursor.close();
         db.close();
     }
+    //TODO: (Finished!)获取该显示在ListView该显示的三种类型数据
 
     public static void GetAllDataFromDB(Cursor cursor, SQLiteDatabase db,int itemId) {
 
@@ -43,4 +44,5 @@ public class GetListViewItemData {
             String number = cursor.getString(cursor.getColumnIndex("number"));
         }
     }
+    //TODO: (Finished!)(未使用)获取数据库的所有数据
 }
