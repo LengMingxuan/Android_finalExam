@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-public class DetailedUserinfo_Activity extends AppCompatActivity {
+public class DetailedUserinfo_Activity extends AppCompatActivity implements View.OnClickListener {
 
     int EUA_itemId;
     Cursor cursor;
@@ -17,6 +19,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity {
     TextView stuId, stuName, stuSex, stuDprtmtNum, stuPhone;
     MyOpenHelper helper = new MyOpenHelper(this);
     String strId, strName, strSex, strDprtmtNum, strPhone;
+    Button  btnEdit, btnBack;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -29,6 +32,8 @@ public class DetailedUserinfo_Activity extends AppCompatActivity {
         stuSex = findViewById(R.id.ADU_stuSex);
         stuDprtmtNum = findViewById(R.id.ADU_stuDepartmentNum);
         stuPhone = findViewById(R.id.ADU_stuPhone);
+        btnBack = findViewById(R.id.btnBackAduToListview);
+        btnEdit = findViewById(R.id.btnEdit);
         //TODO: 控件链接
 
         Intent intent = this.getIntent();
@@ -53,12 +58,38 @@ public class DetailedUserinfo_Activity extends AppCompatActivity {
         stuId.setText("" + strId);
         stuDprtmtNum.setText("" + strDprtmtNum);
         stuPhone.setText("" + strPhone);
-       if (strSex.equals("0")){
+        if (strSex.equals("0")){
             stuSex.setText("男");
-        }else{
+        }
+        else{
             stuSex.setText("女");
         }
         //TODO: 将得到的数据显示在控件上
+
+        btnBack.setOnClickListener(this);
+        btnEdit.setOnClickListener(this);
+       //TODO: 用户按钮点击事件
     }
 
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnBackAduToListview:
+                Intent intent1 = new Intent(DetailedUserinfo_Activity.this, MainActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.btnEdit:
+                Intent intent = new Intent(DetailedUserinfo_Activity.this, EditItemInfoFrDb.class);
+                intent.putExtra("strId",strId);
+                intent.putExtra("strName",strName);
+                intent.putExtra("strPhone",strPhone);
+                intent.putExtra("strSex",strSex);
+                intent.putExtra("strDprtmtNum",strDprtmtNum);
+                intent.putExtra("idd",EUA_itemId);
+                startActivity(intent);
+                break;
+        }
+    }
+    //TODO: 用户按钮点击事件实现
 }

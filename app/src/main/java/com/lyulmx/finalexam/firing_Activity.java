@@ -27,11 +27,14 @@ public class firing_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_firing);
+
         //背景图片
         this.getWindow().setBackgroundDrawableResource(R.drawable._back);
 
-        setContentView(R.layout.activity_firing);
         btnQckIN = findViewById(R.id.btnQuickIn);
+
+
         Thread myThread = new Thread() {//创建子线程
             @Override
             public void run() {
@@ -57,6 +60,7 @@ public class firing_Activity extends AppCompatActivity {
             }
         };
         myThread.start();//启动线程
+
         btnQckIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
