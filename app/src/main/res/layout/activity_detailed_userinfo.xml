@@ -159,7 +159,201 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="本周考勤情况："
+                android:textSize="25dp"
+                android:textColor="#2196F3"/>
         </LinearLayout>
 
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:shrinkColumns = "0,1,2,3,4">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"
+                />
+
+            <Button
+                android:id="@+id/btnTes_ARM"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="嵌入式ARM"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnWes_WLAQ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="网络安全"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnTur_RFID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="RFID"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnFir_JSP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="JSP"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnMon_WLAQ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bntrc0"
+                android:text="网络安全"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnTes_JSP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="JSP"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnTur_VCPP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="VC++"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnFir_And"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="安卓"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/btnMin_WLGC"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="网络工程"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnTes_VCPP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="VC++"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnWes_ARM"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="嵌入式ARM"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnTur_QYSX"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="企业实训"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnTes_RFID"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="RFID"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:id="@+id/btnWes_And"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="安卓"
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:background="@drawable/bntrc0"
+                android:layout_margin="3dp"/>
+        </TableRow>
+
+    </TableLayout>
+
 </LinearLayout>

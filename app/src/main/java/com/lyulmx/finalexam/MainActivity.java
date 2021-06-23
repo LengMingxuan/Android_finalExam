@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         list = new ArrayList<Map<String, Object>>();
 
-        GetListViewItemData.GetData(list, cursor, db);
+        ProjectTools.GetData(list, cursor, db);
         //TODO: (Finished!)获取数据库数据
 
         adapter= new SimpleAdapter(

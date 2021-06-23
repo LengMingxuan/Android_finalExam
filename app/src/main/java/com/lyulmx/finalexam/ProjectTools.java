@@ -1,14 +1,16 @@
 package com.lyulmx.finalexam;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetListViewItemData {
+public class ProjectTools {
 
     public static void GetData(List<Map<String, Object>> list, Cursor cursor, SQLiteDatabase db){
 
@@ -45,4 +47,55 @@ public class GetListViewItemData {
         }
     }
     //TODO: (Finished!)(未使用)获取数据库的所有数据
+
+    @SuppressLint("NonConstantResourceId")
+    public static int ReturnIdByViewid(View v){
+        int finallyResult = -1;
+        switch (v.getId()){
+            case R.id.btnMon_WLAQ:
+                finallyResult = 0;
+                break;
+            case R.id.btnMin_WLGC:
+                finallyResult = 1;
+                break;
+            case R.id.btnTes_ARM:
+                finallyResult = 2;
+                break;
+            case  R.id.btnTes_JSP:
+                finallyResult = 3;
+                break;
+            case R.id.btnTes_VCPP:
+                finallyResult = 4;
+                break;
+            case R.id.btnTes_RFID:
+                finallyResult = 13;
+                break;
+            case R.id.btnWes_ARM:
+                finallyResult = 5;
+                break;
+            case R.id.btnWes_And:
+                finallyResult = 6;
+                break;
+            case  R.id.btnWes_WLAQ:
+                finallyResult = 7;
+                break;
+            case R.id.btnTur_RFID:
+                finallyResult = 8;
+                break;
+            case R.id.btnTur_QYSX:
+                finallyResult = 9;
+                break;
+            case R.id.btnTur_VCPP:
+                finallyResult = 10;
+                break;
+            case R.id.btnFir_And:
+                finallyResult = 11;
+                break;
+            case R.id.btnFir_JSP:
+                finallyResult = 12;
+                break;
+        }
+        return  finallyResult;
+    }
+    //TODO: （待添加）根据控件ID返回对应的中间Int值
 }
