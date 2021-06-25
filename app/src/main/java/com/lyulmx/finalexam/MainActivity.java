@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     TextView tvDebug;
     ListView mainlv;
+    Button btnAllQK;
     List<Map<String, Object>> list,list2;
     Cursor cursor,cursor1;
     SQLiteDatabase db;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         tvDebug = findViewById(R.id.tvDeBug);
         mainlv = findViewById(R.id.lv);
+        btnAllQK = findViewById(R.id.btnAllQK);
         //TODO：(Finished!)链接控件与代码
 
         db = helper.getReadableDatabase();
@@ -52,7 +55,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //TODO: (Finished!)ListView 点击事件
-
+        btnAllQK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AllKq_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

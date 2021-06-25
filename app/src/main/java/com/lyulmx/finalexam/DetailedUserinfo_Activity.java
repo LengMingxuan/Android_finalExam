@@ -112,8 +112,8 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
     @Override
     protected void onResume() {
-        db = helper.getReadableDatabase();
-        cursor1 = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
+        //db = helper.getReadableDatabase();
+        //cursor1 = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
         //int state = ProjectTools.GetKQData(cursor1,db,"Mon1");
 //        if (state ==1){
 //            btnMon_WLAQ.setBackgroundResource(R.drawable.btnrc1);
@@ -161,7 +161,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 } else if (ClickBtnFlags[temp] % 3 == 0) {
                     btn.setBackgroundResource(R.drawable.btnrc3);
                     btn.setTextColor(0xFFFFFFFF);
-                    db.execSQL("update KQ set Mon2=3 where _id="+EUA_itemId);
+                    db.execSQL("update KQ set "+getClassIdByViewid+"=3 where _id="+EUA_itemId);
                 }
         }
     }
