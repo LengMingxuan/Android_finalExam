@@ -12,8 +12,6 @@ import java.util.Map;
 
 public class ProjectTools {
 
-    Cursor cursor;
-    SQLiteDatabase db;
     public static int GetKQData(Cursor cursor, SQLiteDatabase db,String ZD){
         int temp = -1;
         if(cursor != null && cursor.getCount() > 0){
@@ -113,6 +111,7 @@ public class ProjectTools {
         return  finallyResult;
     }
     //TODO: （待添加）根据控件ID返回对应的中间Int值
+    @SuppressLint("NonConstantResourceId")
     public static String getClassIdByViewid(int viewId){
         String class_id = "";
         switch (viewId){

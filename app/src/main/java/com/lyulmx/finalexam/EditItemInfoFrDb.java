@@ -2,7 +2,6 @@ package com.lyulmx.finalexam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,12 +15,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import android.widget.TextView;
 
 public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     EditText EDITAy_etName, EDITAy_etPhone, EDITAy_etStuId;
     Spinner sprBuild, sprRoom;
-    RadioButton rbSex_boy, rbSex_girl;
     SQLiteDatabase db;
     MyOpenHelper helper = new MyOpenHelper(this);
     RadioGroup rgroup;

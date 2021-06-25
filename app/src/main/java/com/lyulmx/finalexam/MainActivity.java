@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     TextView tvDebug;
     ListView mainlv;
     Button btnAllQK;
-    List<Map<String, Object>> list,list2;
-    Cursor cursor,cursor1;
+    List<Map<String, Object>> list;
+    Cursor cursor;
     SQLiteDatabase db;
-    SimpleAdapter adapter,adapter1;
+    SimpleAdapter adapter;
     MyOpenHelper helper = new MyOpenHelper(this);
     int clickListViewItemid;
     @Override

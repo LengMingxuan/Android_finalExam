@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +16,9 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
     int EUA_itemId;
     Cursor cursor,cursor1;
     SQLiteDatabase db;
-    TextView stuId, stuName, stuSex, stuDprtmtNum, stuPhone;
+    TextView stuId, stuName, stuSex, stuApartmentNum, stuPhone;
     MyOpenHelper helper = new MyOpenHelper(this);
-    String strId, strName, strSex, strDprtmtNum, strPhone;
+    String strId, strName, strSex, strApartmentNum, strPhone;
     Button btnEdit, btnBack;
 
     Button btnMon_WLAQ,btnMin_WLGC,
@@ -27,7 +26,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
             btnWes_WLAQ,btnWes_ARM,btnWes_And,
             btnTur_RFID,btnTur_VCPP,btnTur_QYSX,
             btnFir_JSP,btnFir_And;
-    int ClickBtnFlags[] = new int[15];
+    int[] ClickBtnFlags = new int[15];
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -38,7 +37,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         stuId = findViewById(R.id.ADU_stuID);
         stuName = findViewById(R.id.ADU_stuName);
         stuSex = findViewById(R.id.ADU_stuSex);
-        stuDprtmtNum = findViewById(R.id.ADU_stuDepartmentNum);
+        stuApartmentNum = findViewById(R.id.ADU_stuDepartmentNum);
         stuPhone = findViewById(R.id.ADU_stuPhone);
         btnBack = findViewById(R.id.btnBackAduToListview);
         btnEdit = findViewById(R.id.btnEdit);
@@ -74,14 +73,14 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 strName = cursor.getString(cursor.getColumnIndex("Stuname"));
                 strPhone = cursor.getString(cursor.getColumnIndex("Stuphone"));
                 strSex = cursor.getString(cursor.getColumnIndex("StuSex"));
-                strDprtmtNum = cursor.getString(cursor.getColumnIndex("StuApartment"));
+                strApartmentNum = cursor.getString(cursor.getColumnIndex("StuApartment"));
             }
         }
         //TODO: (Finished!)在数据库中查找数据并赋值给变量
 
         stuName.setText("" + strName);
         stuId.setText("" + strId);
-        stuDprtmtNum.setText("" + strDprtmtNum);
+        stuApartmentNum.setText("" + strApartmentNum);
         stuPhone.setText("" + strPhone);
         if (strSex.equals("0")) {
             stuSex.setText("男");
@@ -112,13 +111,6 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
     @Override
     protected void onResume() {
-        //db = helper.getReadableDatabase();
-        //cursor1 = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
-        //int state = ProjectTools.GetKQData(cursor1,db,"Mon1");
-//        if (state ==1){
-//            btnMon_WLAQ.setBackgroundResource(R.drawable.btnrc1);
-//            btnMon_WLAQ.setTextColor(0xFF000000);
-//        }
         super.onResume();
     }
 
@@ -138,7 +130,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 intent.putExtra("strName", strName);
                 intent.putExtra("strPhone", strPhone);
                 intent.putExtra("strSex", strSex);
-                intent.putExtra("strDprtmtNum", strDprtmtNum);
+                intent.putExtra("strDprtmtNum", strApartmentNum);
                 intent.putExtra("idd", EUA_itemId);
                 startActivity(intent);
                 break;
@@ -167,21 +159,4 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
     }
 
     //TODO: (Finished!)用户按钮点击事件实现
-    private class ButtonListener implements View.OnClickListener {
-
-        public void onClick(View v) {
-            Button btn = (Button) v;
-            ClickBtnFlags[0]++;
-            if (ClickBtnFlags[0] % 3 == 1) {
-                btn.setBackgroundResource(R.drawable.btnrc1);
-                btn.setTextColor(0xFF000000);
-            } else if (ClickBtnFlags[0] % 3 == 2) {
-                btn.setBackgroundResource(R.drawable.btnrc2);
-                btn.setTextColor(0xFF000000);
-            } else if (ClickBtnFlags[0] % 3 == 0) {
-                btn.setBackgroundResource(R.drawable.btnrc3);
-                btn.setTextColor(0xFFFFFFFF);
-            }
-        }
-    }
 }

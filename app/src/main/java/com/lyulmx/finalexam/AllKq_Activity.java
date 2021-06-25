@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,14 +17,12 @@ public class AllKq_Activity extends AppCompatActivity {
     Button btnFrKqBackAduToListview;
     Cursor cursor;
     TextView tvStuKQ;
-    int strId;
     String finalTvString = "";
     MyOpenHelper helper = new MyOpenHelper(this);
     String[] AllClassWeek = new String[]{"Mon2","Mon3","Tues1","Tues2","Tues3","Tues4","Wen1",
             "Wen3","Wen4","Tur1","Tur2","Tur3","Fir1","Fir2"};
     String[] StuName = new String[]{"冷鸣轩","张三"};
 
-    int[] WeekClassState = new int[15];
     int ii;
     @SuppressLint("WrongConstant")
     @Override
@@ -37,12 +34,9 @@ public class AllKq_Activity extends AppCompatActivity {
         tvStuKQ = findViewById(R.id.tvStuKQ);
         btnFrKqBackAduToListview = findViewById(R.id.btnFrKqBackAduToListview);
 
-        btnFrKqBackAduToListview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AllKq_Activity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        btnFrKqBackAduToListview.setOnClickListener(v -> {
+            Intent intent = new Intent(AllKq_Activity.this, MainActivity.class);
+            startActivity(intent);
         });
 
         db = helper.getReadableDatabase();
