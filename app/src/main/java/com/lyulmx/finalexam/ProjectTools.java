@@ -12,6 +12,20 @@ import java.util.Map;
 
 public class ProjectTools {
 
+    Cursor cursor;
+    SQLiteDatabase db;
+    public static int GetKQData(Cursor cursor, SQLiteDatabase db,String ZD){
+        int temp = -1;
+        if(cursor != null && cursor.getCount() > 0){
+            while (cursor.moveToNext()){
+
+                int id = cursor.getInt(cursor.getColumnIndex("_id"));
+                int state = cursor.getInt(cursor.getColumnIndex(ZD));
+                temp = state;
+            }
+        }
+        return temp;
+    }
     public static void GetData(List<Map<String, Object>> list, Cursor cursor, SQLiteDatabase db){
 
         list.clear();
@@ -35,6 +49,7 @@ public class ProjectTools {
         db.close();
     }
     //TODO: (Finished!)获取该显示在ListView该显示的三种类型数据
+
 
     public static void GetAllDataFromDB(Cursor cursor, SQLiteDatabase db,int itemId) {
 
@@ -98,4 +113,52 @@ public class ProjectTools {
         return  finallyResult;
     }
     //TODO: （待添加）根据控件ID返回对应的中间Int值
+    public static String getClassIdByViewid(int viewId){
+        String class_id = "";
+        switch (viewId){
+            case R.id.btnMon_WLAQ:
+                class_id = "Mon2";
+                break;
+            case R.id.btnMin_WLGC:
+                class_id = "Mon3";
+                break;
+            case R.id.btnTes_ARM:
+                class_id = "Tues1";
+                break;
+            case  R.id.btnTes_JSP:
+                class_id = "Tues2";
+                break;
+            case R.id.btnTes_VCPP:
+                class_id = "Tues3";
+                break;
+            case R.id.btnTes_RFID:
+                class_id = "Tues4";
+                break;
+            case R.id.btnWes_ARM:
+                class_id = "Wen3";
+                break;
+            case R.id.btnWes_And:
+                class_id = "Wen4";
+                break;
+            case  R.id.btnWes_WLAQ:
+                class_id = "Wen1";
+                break;
+            case R.id.btnTur_RFID:
+                class_id = "Tur1";
+                break;
+            case R.id.btnTur_QYSX:
+                class_id = "Tur3";
+                break;
+            case R.id.btnTur_VCPP:
+                class_id = "Tur2";
+                break;
+            case R.id.btnFir_And:
+                class_id = "Fir2";
+                break;
+            case R.id.btnFir_JSP:
+                class_id = "Fir1";
+                break;
+        }
+        return class_id;
+    }
 }

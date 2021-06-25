@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class DetailedUserinfo_Activity extends AppCompatActivity implements View.OnClickListener {
 
     int EUA_itemId;
-    Cursor cursor;
+    Cursor cursor,cursor1;
     SQLiteDatabase db;
     TextView stuId, stuName, stuSex, stuDprtmtNum, stuPhone;
     MyOpenHelper helper = new MyOpenHelper(this);
@@ -67,6 +67,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
         db = helper.getReadableDatabase();
         cursor = db.rawQuery("select * from users where _id=?", new String[]{String.valueOf(EUA_itemId)});
+        cursor1 = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 strId = cursor.getString(cursor.getColumnIndex("StuId"));
@@ -111,7 +112,13 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
     @Override
     protected void onResume() {
-
+        db = helper.getReadableDatabase();
+        cursor1 = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
+        //int state = ProjectTools.GetKQData(cursor1,db,"Mon1");
+//        if (state ==1){
+//            btnMon_WLAQ.setBackgroundResource(R.drawable.btnrc1);
+//            btnMon_WLAQ.setTextColor(0xFF000000);
+//        }
         super.onResume();
     }
 
@@ -140,17 +147,21 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
             case R.id.btnWes_ARM:case R.id.btnWes_And:case  R.id.btnWes_WLAQ:
             case R.id.btnTur_RFID:case R.id.btnTur_QYSX:case R.id.btnTur_VCPP:
             case R.id.btnFir_And:case R.id.btnFir_JSP:
-
+                String getClassIdByViewid = ProjectTools.getClassIdByViewid(v.getId());
                 ClickBtnFlags[temp]++;
                 if (ClickBtnFlags[temp] % 3 == 1) {
+
                     btn.setBackgroundResource(R.drawable.btnrc1);
                     btn.setTextColor(0xFF000000);
+                    db.execSQL("update KQ set "+getClassIdByViewid+"=1 where _id="+EUA_itemId);
                 } else if (ClickBtnFlags[temp] % 3 == 2) {
                     btn.setBackgroundResource(R.drawable.btnrc2);
                     btn.setTextColor(0xFF000000);
+                    db.execSQL("update KQ set "+getClassIdByViewid+"=2 where _id="+EUA_itemId);
                 } else if (ClickBtnFlags[temp] % 3 == 0) {
                     btn.setBackgroundResource(R.drawable.btnrc3);
                     btn.setTextColor(0xFFFFFFFF);
+                    db.execSQL("update KQ set Mon2=3 where _id="+EUA_itemId);
                 }
         }
     }
