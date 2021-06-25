@@ -18,7 +18,7 @@
         android:id="@+id/btnAllQK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="全部学生非常规考勤情况" />
 
     <ListView
         android:id="@+id/lv"

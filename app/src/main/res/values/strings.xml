@@ -1,8 +1,20 @@
 <resources>
-    <string name="app_name">finalExam</string>
-    <string name="DetailedUserInformation">学号：</string>
-    <array name="info">
-        学号
-        三射
-    </array>
+    <string name="app_name" translatable="false">finalExam</string>
+    <string name="DetailedUserInformation" translatable="false">学号：</string>
+    <string-array name="AllClass">
+        <item>网络安全</item>
+        <item>网络工程</item>
+        <item>嵌入式系统</item>
+        <item>Web应用开发</item>
+        <item>VC++应用开发</item>
+        <item>RFUD原理及应用</item>
+        <item>网络安全</item>
+        <item>嵌入式系统</item>
+        <item>移动应用开发</item>
+        <item>RFID原理及应用</item>
+        <item>VC++应用开发</item>
+        <item>企业技术项目实训6</item>
+        <item>WEB应用开发</item>
+        <item>移动应用开发</item>
+    </string-array>
 </resources>

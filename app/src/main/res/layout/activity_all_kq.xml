@@ -7,6 +7,15 @@
     tools:context=".AllKq_Activity"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/btnFrKqBackAduToListview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:text="返回"
+        android:textColor="#2196F3"
+        android:layout_gravity="left" />
+
     <TextView
         android:id="@+id/tvStuKQ"
         android:layout_width="match_parent"
