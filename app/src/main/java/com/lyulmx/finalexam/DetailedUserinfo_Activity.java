@@ -49,7 +49,6 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         btnMon_WLAQ = findViewById(R.id.btnMon_WLAQ);
         btnMin_WLGC = findViewById(R.id.btnMin_WLGC);
         btnTes_ARM = findViewById(R.id.btnTes_ARM);
-
         btnTes_JSP = findViewById(R.id.btnTes_JSP);
         btnTes_VCPP = findViewById(R.id.btnTes_VCPP);
         btnTes_RFID = findViewById(R.id.btnTes_RFID);
@@ -64,8 +63,8 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         //TODO: (Finished!)控件链接
 
         Button[] btnRid = new Button[]{btnMon_WLAQ, btnMin_WLGC, btnTes_ARM, btnTes_JSP, btnTes_VCPP,
-                btnTes_RFID, btnWes_ARM, btnWes_And, btnWes_WLAQ, btnTur_RFID, btnTur_VCPP, btnTur_QYSX,
-                btnFir_And, btnFir_JSP};
+                btnTes_RFID, btnWes_WLAQ,btnWes_ARM, btnWes_And, btnTur_RFID, btnTur_VCPP, btnTur_QYSX,
+                btnFir_JSP,btnFir_And };
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -124,9 +123,15 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                     ii = cursor.getInt(cursor.getColumnIndex(AllClassWeek[j]));
                     if (ii == 2){
                         btnRid[j].setBackgroundResource(R.drawable.btnrc2);
+                        //ClickBtnFlags[j] =1;
                     }
                     else if (ii == 3){
                         btnRid[j].setBackgroundResource(R.drawable.btnrc3);
+                        //ClickBtnFlags[j] =0;
+                    }
+                    else if (ii == 1){
+                        btnRid[j].setBackgroundResource(R.drawable.btnrc1);
+                        //ClickBtnFlags[j] =1;
                     }
                 }
             }

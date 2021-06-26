@@ -31,10 +31,6 @@ public class firing_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firing);
 
-        //背景图片
-        this.getWindow().setBackgroundDrawableResource(R.drawable._back);
-        //TODO: (Finished!)设置启动界面的背景图片
-
         btnQckIN = findViewById(R.id.btnQuickIn);
         //TODO: (Finished!)链接控件
 
@@ -64,6 +60,10 @@ public class firing_Activity extends AppCompatActivity {
         };
         myThread.start();//启动线程
         //TODO: (Finished!)定义并启动线程显示倒计时按钮上的Text
+
+        //背景图片
+        this.getWindow().setBackgroundDrawableResource(R.drawable._back);
+        //TODO: (Finished!)设置启动界面的背景图片
 
         btnQckIN.setOnClickListener(new View.OnClickListener() {
             @Override
