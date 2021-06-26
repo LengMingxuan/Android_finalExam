@@ -26,6 +26,11 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
             btnWes_WLAQ,btnWes_ARM,btnWes_And,
             btnTur_RFID,btnTur_VCPP,btnTur_QYSX,
             btnFir_JSP,btnFir_And;
+
+
+    String[] AllClassWeek = new String[]{"Mon2","Mon3","Tues1","Tues2","Tues3","Tues4","Wen1",
+            "Wen3","Wen4","Tur1","Tur2","Tur3","Fir1","Fir2"};
+
     int[] ClickBtnFlags = new int[15];
 
     @SuppressLint("SetTextI18n")
@@ -58,6 +63,9 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         btnFir_JSP = findViewById(R.id.btnFir_JSP);
         //TODO: (Finished!)控件链接
 
+        Button[] btnRid = new Button[]{btnMon_WLAQ, btnMin_WLGC, btnTes_ARM, btnTes_JSP, btnTes_VCPP,
+                btnTes_RFID, btnWes_ARM, btnWes_And, btnWes_WLAQ, btnTur_RFID, btnTur_VCPP, btnTur_QYSX,
+                btnFir_And, btnFir_JSP};
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -66,7 +74,6 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
         db = helper.getReadableDatabase();
         cursor = db.rawQuery("select * from users where _id=?", new String[]{String.valueOf(EUA_itemId)});
-        cursor1 = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 strId = cursor.getString(cursor.getColumnIndex("StuId"));
@@ -107,6 +114,23 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         btnFir_JSP.setOnClickListener(this);
 
         //TODO: (Finished!)用户按钮点击事件
+
+        int ii;
+        for (int j = 0; j < 14; j++)
+        {
+            cursor = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(EUA_itemId)});
+            if (cursor != null && cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    ii = cursor.getInt(cursor.getColumnIndex(AllClassWeek[j]));
+                    if (ii == 2){
+                        btnRid[j].setBackgroundResource(R.drawable.btnrc2);
+                    }
+                    else if (ii == 3){
+                        btnRid[j].setBackgroundResource(R.drawable.btnrc3);
+                    }
+                }
+            }
+        }
     }
 
     @Override
