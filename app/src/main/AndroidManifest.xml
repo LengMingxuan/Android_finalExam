@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalExam">
-        <activity android:name=".AllKq_Activity"></activity>
+        <activity android:name=".AllKq_Activity" />
         <activity android:name=".EditItemInfoFrDb" />
         <activity android:name=".DetailedUserinfo_Activity" />
         <activity android:name=".firing_Activity">

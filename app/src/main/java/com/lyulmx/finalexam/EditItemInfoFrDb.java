@@ -145,6 +145,7 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
                 Intent intent = new Intent(EditItemInfoFrDb.this,MainActivity.class);
                 startActivity(intent);
                 finish();
+                db.close();
             }
         });
         //TODO: (Finished!)更新按钮按键监听事件

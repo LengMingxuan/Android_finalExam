@@ -1,8 +1,10 @@
 package com.lyulmx.finalexam;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,19 +21,21 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
     TextView stuId, stuName, stuSex, stuApartmentNum, stuPhone;
     MyOpenHelper helper = new MyOpenHelper(this);
     String strId, strName, strSex, strApartmentNum, strPhone;
-    Button btnEdit, btnBack;
+    Button btnEdit, btnBack, btnClear;
 
     Button btnMon_WLAQ,btnMin_WLGC,
             btnTes_ARM,btnTes_JSP,btnTes_VCPP,btnTes_RFID,
             btnWes_WLAQ,btnWes_ARM,btnWes_And,
             btnTur_RFID,btnTur_VCPP,btnTur_QYSX,
             btnFir_JSP,btnFir_And;
+    RoundImageView useImg;
 
 
     String[] AllClassWeek = new String[]{"Mon2","Mon3","Tues1","Tues2","Tues3","Tues4","Wen1",
             "Wen3","Wen4","Tur1","Tur2","Tur3","Fir1","Fir2"};
 
     int[] ClickBtnFlags = new int[15];
+    int[] tx = new int[]{R.drawable.tx1,R.drawable.tx2,R.drawable.tx3,R.drawable.tx4,R.drawable.tx5,R.drawable.tx6};
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -41,6 +45,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
         stuId = findViewById(R.id.ADU_stuID);
         stuName = findViewById(R.id.ADU_stuName);
+        btnClear = findViewById(R.id.btnClear);
         stuSex = findViewById(R.id.ADU_stuSex);
         stuApartmentNum = findViewById(R.id.ADU_stuDepartmentNum);
         stuPhone = findViewById(R.id.ADU_stuPhone);
@@ -60,16 +65,22 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         btnTur_QYSX = findViewById(R.id.btnTur_QYSX);
         btnFir_And = findViewById(R.id.btnFir_And);
         btnFir_JSP = findViewById(R.id.btnFir_JSP);
+        useImg = findViewById(R.id.userPhoto);
         //TODO: (Finished!)控件链接
 
         Button[] btnRid = new Button[]{btnMon_WLAQ, btnMin_WLGC, btnTes_ARM, btnTes_JSP, btnTes_VCPP,
                 btnTes_RFID, btnWes_WLAQ,btnWes_ARM, btnWes_And, btnTur_RFID, btnTur_VCPP, btnTur_QYSX,
                 btnFir_JSP,btnFir_And };
 
+
+
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         EUA_itemId = bundle.getInt("itemId");
         //TODO: (Finished!)获取用户点击的itemID
+
+
+        useImg.setImageResource(tx[EUA_itemId%6]);
 
         db = helper.getReadableDatabase();
         cursor = db.rawQuery("select * from users where _id=?", new String[]{String.valueOf(EUA_itemId)});
@@ -111,6 +122,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         btnTur_QYSX.setOnClickListener(this);
         btnFir_And.setOnClickListener(this);
         btnFir_JSP.setOnClickListener(this);
+        btnClear.setOnClickListener(this);
 
         //TODO: (Finished!)用户按钮点击事件
 
@@ -138,10 +150,6 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -149,6 +157,18 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
         Button btn = (Button) v;
         int temp = ProjectTools.ReturnIdByViewid(v);
         switch (v.getId()) {
+            case R.id.btnClear:
+                db.execSQL("update KQ set Mon2 = null,Mon3 = null,Tues1 = null,Tues2 = null,Tues3 = null,Tues4 = null," +
+                        "Wen1 = null,Wen3 = null,Wen4 = null,Tur1 = null,Tur2 = null,Tur3 = null,Fir1 = null,Fir2 = null where _id ="+EUA_itemId);
+                AlertDialog.Builder builder  = new AlertDialog.Builder(DetailedUserinfo_Activity.this);
+                builder.setTitle("确认" ) ;
+                builder.setMessage("记录已消除，点击是将返回主界面") ;
+                builder.setPositiveButton("是", (dialog, which) -> {
+                    Intent intent = new Intent(DetailedUserinfo_Activity.this, MainActivity.class);
+                    startActivity(intent);
+                });
+                builder.show();
+                break;
             case R.id.btnBackAduToListview:
                 Intent intent1 = new Intent(DetailedUserinfo_Activity.this, MainActivity.class);
                 startActivity(intent1);
@@ -163,6 +183,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 intent.putExtra("idd", EUA_itemId);
                 startActivity(intent);
                 break;
+
             case R.id.btnMon_WLAQ:case R.id.btnMin_WLGC:
             case R.id.btnTes_ARM:case  R.id.btnTes_JSP:case R.id.btnTes_VCPP:case R.id.btnTes_RFID:
             case R.id.btnWes_ARM:case R.id.btnWes_And:case  R.id.btnWes_WLAQ:
@@ -184,6 +205,13 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                     btn.setTextColor(0xFFFFFFFF);
                     db.execSQL("update KQ set "+getClassIdByViewid+"=3 where _id="+EUA_itemId);
                 }
+
+        }
+    }
+    class MyThread extends Thread{
+        @Override
+        public void run(){
+            //处理事务
         }
     }
 

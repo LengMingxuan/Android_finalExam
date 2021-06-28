@@ -21,7 +21,7 @@ public class AllKq_Activity extends AppCompatActivity {
     MyOpenHelper helper = new MyOpenHelper(this);
     String[] AllClassWeek = new String[]{"Mon2","Mon3","Tues1","Tues2","Tues3","Tues4","Wen1",
             "Wen3","Wen4","Tur1","Tur2","Tur3","Fir1","Fir2"};
-    String[] StuName = new String[]{"冷鸣轩","张三"};
+    String[] StuName = new String[]{"冷鸣轩","张三","张小明","王小伙","鹰酱","王二麻"};
 
     int ii;
     @SuppressLint("WrongConstant")
@@ -40,7 +40,7 @@ public class AllKq_Activity extends AppCompatActivity {
         });
 
         db = helper.getReadableDatabase();
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 6; i++) {
             cursor = db.rawQuery("select * from KQ where _id=?", new String[]{String.valueOf(i)});
             finalTvString += StuName[i-1] + ":<br>";
             if (cursor != null && cursor.getCount() > 0) {
@@ -66,5 +66,7 @@ public class AllKq_Activity extends AppCompatActivity {
             }
         }
         tvStuKQ.setText(HtmlCompat.fromHtml(finalTvString, Html.FROM_HTML_MODE_COMPACT));
+        cursor.close();
+        db.close();
     }
 }

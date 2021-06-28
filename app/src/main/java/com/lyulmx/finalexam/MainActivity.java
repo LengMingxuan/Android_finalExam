@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btnAllQK = findViewById(R.id.btnAllQK);
         //TODO：(Finished!)链接控件与代码
 
+
         db = helper.getReadableDatabase();
         cursor = db.rawQuery("select * from users",null);
 
@@ -74,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
         adapter= new SimpleAdapter(
                 this,list,R.layout.singlelistviewlayout,
-                new String[]{"_id","StuId","Stuname"},
-                new int[]{R.id.idStu,R.id.stuId,R.id.stuName});
+                new String[]{"_id","StuId","Stuname","tx"},
+                new int[]{R.id.idStu,R.id.stuId,R.id.stuName,R.id.userPhoto2});
         mainlv.setAdapter(adapter);
         //TODO：(Finished!)ListView 显示数据
     }

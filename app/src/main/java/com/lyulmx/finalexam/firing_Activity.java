@@ -20,9 +20,7 @@ public class firing_Activity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if (msg.arg1 == 1){
-                btnQckIN.setText(msg.obj+""+" | 跳过");
-            }
+                btnQckIN.setText(msg.arg2+""+" | 跳过");
         }
     };
 
@@ -37,14 +35,13 @@ public class firing_Activity extends AppCompatActivity {
         Thread myThread = new Thread() {//创建子线程
             @Override
             public void run() {
-                int tickets = 3;
-                for(int i = 0; i<=3; i++){
+                int tickets = 1;
+                for(int i = 0; i<2; i++){
                     try {
                         Thread.sleep(1000);
                         if(tickets > 0) {
                             Message message= new Message();
-                            message.arg1 = 1;
-                            message.obj = tickets--;
+                            message.arg2 = tickets--;
                             handler.sendMessage(message);
                         }
                     } catch (InterruptedException e) {

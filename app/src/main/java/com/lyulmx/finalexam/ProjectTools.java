@@ -27,7 +27,7 @@ public class ProjectTools {
     public static void GetData(List<Map<String, Object>> list, Cursor cursor, SQLiteDatabase db){
 
         list.clear();
-
+        int[] tx = new int[]{R.drawable.tx1,R.drawable.tx2,R.drawable.tx3,R.drawable.tx4,R.drawable.tx5,R.drawable.tx6};
         Map<String, Object> map = null;
         if(cursor != null && cursor.getCount() > 0){
             while (cursor.moveToNext()){
@@ -39,6 +39,7 @@ public class ProjectTools {
                 map.put("_id",id);
                 map.put("StuId",studentId);
                 map.put("Stuname",studentName);
+                map.put("tx",tx[id%6]);
 
                 list.add(map);
             }
@@ -48,18 +49,6 @@ public class ProjectTools {
     }
     //TODO: (Finished!)获取该显示在ListView该显示的三种类型数据
 
-
-    public static void GetAllDataFromDB(Cursor cursor, SQLiteDatabase db,int itemId) {
-
-        cursor = db.rawQuery("select * from student where id=?", new String[]{String.valueOf(itemId)});
-        while (cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndex("id"));
-            String name = cursor.getString(cursor.getColumnIndex("name"));
-            String password = cursor.getString(cursor.getColumnIndex("password"));
-            String number = cursor.getString(cursor.getColumnIndex("number"));
-        }
-    }
-    //TODO: (Finished!)(未使用)获取数据库的所有数据
 
     @SuppressLint("NonConstantResourceId")
     public static int ReturnIdByViewid(View v){
