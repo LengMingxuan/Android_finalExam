@@ -16,6 +16,6 @@
         android:layout_gravity="right"
         android:gravity="center"
         android:background="@drawable/firingquickbutton"
-        android:text="2 | 跳过" />
+        android:text="3 | 跳过" />
 
 </LinearLayout>

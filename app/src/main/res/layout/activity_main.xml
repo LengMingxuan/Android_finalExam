@@ -12,13 +12,21 @@
         android:id="@+id/tvDeBug"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="周课程考勤系统"
+        android:textColor="#000000"
+        android:textSize="40dp"/>
 
     <Button
         android:id="@+id/btnAllQK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="全部学生非常规考勤情况" />
+
+    <Button
+        android:id="@+id/btnChangeWeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="换周" />
 
     <ListView
         android:id="@+id/lv"

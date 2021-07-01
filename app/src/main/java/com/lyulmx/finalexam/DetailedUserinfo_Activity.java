@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,6 +37,9 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
     int[] ClickBtnFlags = new int[15];
     int[] tx = new int[]{R.drawable.tx1,R.drawable.tx2,R.drawable.tx3,R.drawable.tx4,R.drawable.tx5,R.drawable.tx6};
+
+
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -149,6 +153,7 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
             }
         }
     }
+    //TODO: (Finished!)初始化课程状态颜色
 
 
     @SuppressLint("NonConstantResourceId")
@@ -192,7 +197,6 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
                 String getClassIdByViewid = ProjectTools.getClassIdByViewid(v.getId());
                 ClickBtnFlags[temp]++;
                 if (ClickBtnFlags[temp] % 3 == 1) {
-
                     btn.setBackgroundResource(R.drawable.btnrc1);
                     btn.setTextColor(0xFF000000);
                     db.execSQL("update KQ set "+getClassIdByViewid+"=1 where _id="+EUA_itemId);
@@ -208,6 +212,16 @@ public class DetailedUserinfo_Activity extends AppCompatActivity implements View
 
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            Intent intent1 = new Intent(DetailedUserinfo_Activity.this, MainActivity.class);
+            startActivity(intent1);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     class MyThread extends Thread{
         @Override
         public void run(){

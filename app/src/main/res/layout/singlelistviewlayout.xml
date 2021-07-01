@@ -27,23 +27,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
-        <TextView
-            android:id="@+id/stuId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/stuName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
         <TextView
             android:id="@+id/idStu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="10dp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/stuName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="TextView"
+            android:textColor="#0087FF"/>
+
+        <TextView
+            android:id="@+id/stuId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#8C8C8C"/>
 
     </LinearLayout>
 

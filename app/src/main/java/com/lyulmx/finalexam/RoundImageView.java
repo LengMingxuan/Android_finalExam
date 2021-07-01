@@ -17,7 +17,6 @@ import android.widget.ImageView;
 
 /**
  * 自定义的圆形ImageView，可以直接当组件在布局中使用。
- * @author caizhiming
  *
  */
 @SuppressLint("AppCompatCustomView")
@@ -42,7 +41,6 @@ public class RoundImageView extends ImageView{
 
     /**
      * 绘制圆形图片
-     * @author caizhiming
      */
     @Override
     protected void onDraw(Canvas canvas) {
@@ -66,7 +64,6 @@ public class RoundImageView extends ImageView{
      * @param bitmap
      * @param pixels
      * @return Bitmap
-     * @author caizhiming
      */
     private Bitmap getCircleBitmap(Bitmap bitmap, int pixels) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),

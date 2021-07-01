@@ -142,7 +142,9 @@ public class EditItemInfoFrDb extends AppCompatActivity implements RadioGroup.On
                 SpinnerRoomsChangedFlag = false;
                 SpinnerBuildingChangedFlag = false;
                 db.execSQL("update users set StuSex='"+newStuSex+"' where _id="+strid);
-                Intent intent = new Intent(EditItemInfoFrDb.this,MainActivity.class);
+
+                Intent intent = new Intent(EditItemInfoFrDb.this,DetailedUserinfo_Activity.class);
+                intent.putExtra("itemId",Integer.parseInt(strid));
                 startActivity(intent);
                 finish();
                 db.close();

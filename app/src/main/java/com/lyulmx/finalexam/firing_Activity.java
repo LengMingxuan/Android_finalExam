@@ -35,8 +35,8 @@ public class firing_Activity extends AppCompatActivity {
         Thread myThread = new Thread() {//创建子线程
             @Override
             public void run() {
-                int tickets = 1;
-                for(int i = 0; i<2; i++){
+                int tickets = 2;
+                for(int i = 0; i<3; i++){
                     try {
                         Thread.sleep(1000);
                         if(tickets > 0) {
